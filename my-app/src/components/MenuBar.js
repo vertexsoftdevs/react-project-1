@@ -4,7 +4,7 @@ import React from 'react';
 
 function MenuBar() {
   return (
-    <nav className='   h-screen tracking-tight font-bold text-6xl text-left text-black w-96 bg-white'>
+    <nav className='  text-white  h-screen tracking-tight font-bold text-6xl text-left  w-96'>
       <ul>
         <li className=' leading-normal   hover:translate-x-[5px]  hover:tracking-wider hover:text-lime-400 ' ><a href="/">Home</a></li>
         <li className=' leading-normal  hover:translate-x-[5px]  hover:tracking-wider  hover:text-lime-400  '><a href="/about">Portfolio</a></li>
