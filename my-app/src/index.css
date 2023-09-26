@@ -16,3 +16,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#slider-container {
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+}
+
+#slider-text {
+  transition: transform 1s ease-in-out;
+}
