@@ -63,6 +63,69 @@ function App() {
 
   // VertexSlider();
 
+  //scroll animation
+  // const AnimateIn = ({ children }) => {
+  //   const ref = useRef<HTMLDivElement>(null);
+  //   const onScreen = useElementOnScreen(ref);
+  //   return (
+  //     <div
+  //       ref={ref}
+  //       style={{
+  //         opacity: onScreen ? 1 : 0,
+  //         translate: onScreen ? "none" : "0 2rem",
+  //         transition: "600ms ease-in-out",
+  //       }}
+  //     >
+  //       {children}
+  //     </div>
+  //   );
+  // };
+
+
+  // function useElementOnScreen (
+  //   ref,
+  //   rootMargin = "0px",
+  // ) {
+  //   const [isIntersecting, setIsIntersecting] = useState(true);
+  //   useEffect(() => {
+  //     const observer = new IntersectionObserver(
+  //       ([entry]) => {
+  //         setIsIntersecting(entry.isIntersecting);
+  //       },
+  //       { rootMargin }
+  //     );
+  //   if (ref.current) {
+  //     observer.observe(ref.current);
+  //   }
+  //   return () => {
+  //     if (ref.current) {
+  //       observer.unobserve(ref.current);
+  //     }
+  //   };
+  // }, []);
+  //   return isIntersecting;
+
+  //  }
+  //scroll animation
+
+  // const observer = new IntersectionObserver((entries)=>{
+  //   entries.forEach((entry)=>{
+  //     console.log(entry);
+
+  //     if(entry.isIntersecting){
+  //       entry.target.classList.add('show');
+  //     }else{
+  //       entry.target.classList.remove('show');
+  //     }
+  //   })
+  // });
+  
+  // const hiddenElement = document.querySelectorAll('.scroll-hidden');
+  // hiddenElement.forEach((el)=>{
+  //   observer.observe(el);
+  // });
+
+
   return (
     <div className="App">
       {/* Render the HouseDoorFill icon */}
@@ -80,7 +143,9 @@ function App() {
 
         {/* Second Layer */}
         <div className='h-96 flex items-center justify-center'>
-          <label className='text-white text-6xl font-bold hover:text-lime-400'>"Coding the Future, One Line at a Time."</label>
+         
+          <label className='fade-in-vertical-enter fade-in-vertical-enter-active text-white text-6xl font-bold hover:text-lime-400'>"Coding the Future, One Line at a Time."</label>
+
         </div>
 
         <div className='flex items-center justify-center text-white'>
@@ -91,18 +156,21 @@ function App() {
         </div>
 
         {/* Third Layer */}
-        <div className={`absolute top-0 left-0 h-screen w-screen ${menuVisible ? '' : 'hidden'} bg-black`}>
+        <div className={`absolute top-0 left-0 h-screen w-screen ${menuVisible ? '' : 'hidden'} `}>
+          
+          <div className=' ms-3 grid grid-cols-12'>
           <button onClick={toggleMenu}>
-            <List className='' style={{ fontSize: '60px' }} />
+            <List className=' text-white' style={{ fontSize: '60px' }} />
           </button>
+          </div>
           <MenuBar />
         </div>
 
       </div>
-      <div className='relative w-screen h-screen bg-black overflow-x-hidden'>
+      <div className='relative w-screen h-screen bg-black overflow-hidden'>
         <div className='grid grid-cols-12 items-center'>
-          <div className='col-span-6 '>
-            <div className='flex items-start justify-center text-white text-6xl font-bold'>
+          <div className='col-span-12 md:col-span-6 '>
+            <div className='flex items-start justify-center text-white text-4xl md:text-6xl font-bold'>
               <ul className=' text-start' style={{ listStyleType: 'disc' }}>
                 <li className=' hover:text-lime-400'>Mobile Application</li>
                 <li className=' hover:text-lime-400'>Desktop Application</li>
@@ -112,16 +180,16 @@ function App() {
               </ul>
             </div>
           </div>
-          <div className='col-span-6 '>
+          <div className='col-span-12 md:col-span-6 '>
             <div className='flex items-center justify-center'>
-              <img src={Img1} />
+              <img className=' h-66' src={Img1} />
             </div>
           </div>
 
         </div>
         <div className='grid grid-cols-12 items-center ms-10'>
           <div className='col-span-4 '>
-            <div className='hover:font-bold text-3xl hover:tracking-widest hover:text-black rounded-lg w-90 hover:bg-lime-400 flex items-center justify-center text-white border border-white '>
+            <div className=' transition duration-500 ease-in-out hover:font-bold text-3xl hover:tracking-widest hover:text-black rounded-lg w-90 hover:bg-lime-400 flex items-center justify-center text-white border border-white '>
               <p className='mr-2 my-6  '>OUR BELIEFS</p>
             </div>
           </div>
@@ -131,14 +199,14 @@ function App() {
 
       </div>
 
-      <div className='relative w-screen h-screen bg-black overflow-x-hidden'>
+      <div className='relative w-screen h-screen bg-black overflow-auto'>
         <div className='grid grid-cols-12 items-center'>
 
           <div className='col-span-12 my-2'>
             <div className=' w-100 text-center mb-3'>
               <label className=' text-white  underline text-6xl '>OUR TEAM</label>
             </div>
-            <div className='grid grid-cols-12 gap-4'>
+            <div className='grid grid-cols-6 md:grid-cols-12 gap-4'>
               <div className='col-span-6 md:col-span-3'>
                 <div className="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out border border-white">
                   {/* Image */}
@@ -320,7 +388,7 @@ function App() {
 
         </div>
       </div>
-      <div className='relative w-screen h-screen bg-black overflow-x-hidden'>
+      <div className='relative w-screen h-screen bg-black '>
         <div className='grid grid-cols-12 items-center'>
 
           <div className='col-span-12 my-2'>
@@ -340,7 +408,7 @@ function App() {
                   </div>
 
                   {/* Black box hidden by default */}
-                  <div className=" font-bold text-lime-400 absolute inset-0 bg-black opacity-0 hover:opacity-75 transition duration-300 ease-in-out flex flex-col items-center justify-center text-white">
+                  <div className=" font-boldabsolute inset-0 bg-black opacity-0 hover:opacity-75 transition duration-300 ease-in-out flex flex-col items-center justify-center text-white">
                     <p className=" text-base mb-2"><b>Rs.</b> 30,000/=</p>
                     <label>React</label>
                     <label>Responsive Layout</label>
@@ -357,7 +425,7 @@ function App() {
               <div className='col-span-6 md:col-span-3'>
                 <div className="min-h-full max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out border border-white relative">
                   <div className="px-6 py-4">
-                    <div className="font-bold text-xl mb-2">Standard Plans</div>
+                    <div className="font-bold text-xl mb-2">Basic Plans</div>
                     <img
                       className="mt-4 object-cover w-full h-48"
                       src={PackageImg}
@@ -366,9 +434,9 @@ function App() {
                   </div>
 
                   {/* Black box hidden by default */}
-                  <div className=" font-bold text-lime-400 absolute inset-0 bg-black opacity-0 hover:opacity-75 transition duration-300 ease-in-out flex flex-col items-center justify-center text-white">
+                  <div className=" font-boldabsolute inset-0 bg-black opacity-0 hover:opacity-75 transition duration-300 ease-in-out flex flex-col items-center justify-center text-white">
                     <p className=" text-base mb-2"><b>Rs.</b> 30,000/=</p>
-                    <label>React </label>
+                    <label>React</label>
                     <label>Responsive Layout</label>
                     <label>Cross-browser Support</label>
                     <label>1-2 Pages</label>
@@ -379,11 +447,10 @@ function App() {
 
                 </div>
               </div>
-
               <div className='col-span-6 md:col-span-3'>
                 <div className="min-h-full max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out border border-white relative">
                   <div className="px-6 py-4">
-                    <div className="font-bold text-xl mb-2">Advanced  Plans</div>
+                    <div className="font-bold text-xl mb-2">Basic Plans</div>
                     <img
                       className="mt-4 object-cover w-full h-48"
                       src={PackageImg}
@@ -392,9 +459,9 @@ function App() {
                   </div>
 
                   {/* Black box hidden by default */}
-                  <div className=" font-bold text-lime-400 absolute inset-0 bg-black opacity-0 hover:opacity-75 transition duration-300 ease-in-out flex flex-col items-center justify-center text-white">
+                  <div className=" font-boldabsolute inset-0 bg-black opacity-0 hover:opacity-75 transition duration-300 ease-in-out flex flex-col items-center justify-center text-white">
                     <p className=" text-base mb-2"><b>Rs.</b> 30,000/=</p>
-                    <label>React </label>
+                    <label>React</label>
                     <label>Responsive Layout</label>
                     <label>Cross-browser Support</label>
                     <label>1-2 Pages</label>
@@ -405,12 +472,10 @@ function App() {
 
                 </div>
               </div>
-
-
               <div className='col-span-6 md:col-span-3'>
                 <div className="min-h-full max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out border border-white relative">
                   <div className="px-6 py-4">
-                    <div className="font-bold text-xl mb-2">Other Plans</div>
+                    <div className="font-bold text-xl mb-2">Basic Plans</div>
                     <img
                       className="mt-4 object-cover w-full h-48"
                       src={PackageImg}
@@ -419,9 +484,9 @@ function App() {
                   </div>
 
                   {/* Black box hidden by default */}
-                  <div className=" font-bold text-lime-400 absolute inset-0 bg-black opacity-0 hover:opacity-75 transition duration-300 ease-in-out flex flex-col items-center justify-center text-white">
+                  <div className=" font-boldabsolute inset-0 bg-black opacity-0 hover:opacity-75 transition duration-300 ease-in-out flex flex-col items-center justify-center text-white">
                     <p className=" text-base mb-2"><b>Rs.</b> 30,000/=</p>
-                    <label>React (Without Frameworks)</label>
+                    <label>React</label>
                     <label>Responsive Layout</label>
                     <label>Cross-browser Support</label>
                     <label>1-2 Pages</label>
@@ -439,14 +504,14 @@ function App() {
         </div>
 
       </div>
-      <div className='relative w-screen h-screen bg-black overflow-x-hidden'>
-        <div className='grid grid-cols-12 items-center'>
+      <div className='relative w-screen h-screen bg-black '>
+        <div className='grid grid-cols-6 items-center'>
 
           <div className='col-span-12 my-2'>
             <div className=' w-100 text-center mb-3'>
               <label className=' text-white  underline text-6xl '>Contact Us</label>
             </div>
-            <div className='text-white grid grid-cols-12 gap-4 overflow-hidden p-3 px-3'>
+            <div className='font-bold text-black grid grid-cols-12 gap-4 overflow-hidden p-10 px-3 py-6 bg-lime-400'>
               <div class=" border border-lime-400 flex flex-col items-center justify-center h-screen w-screen">
                 <div class="text-3xl info mb-4">
                   <div class="address">
@@ -467,12 +532,15 @@ function App() {
                     <p>+94 72 5519387</p>
                   </div>
                 </div>
+                <div className='  flex flex-row justify-center bg-white'>
                 <iframe
                   src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=pilimathalawa town&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"about
                   frameborder="0"
-                  class="w-screen h-screen"
+                  className=" w-96 h-80"
                   allowfullscreen
                 ></iframe>
+                </div>
+                
               </div>
 
 
